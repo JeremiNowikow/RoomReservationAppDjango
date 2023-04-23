@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All rooms</title>
+    <style>
+        table, th, td {
+            border: 1px solid
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr style="font-weight: bold;">
+            <td>Name</td>
+            <td>Capacity</td>
+            <td>Availability</td>
+            <td>Has projector</td>
+            <td>Book room</td>
+            <td>Delete room</td>
+            <td>Book room</td>
+        </tr>
+
+        {% for room in rooms %}
+            <tr>
+                <td><a href="/room/{{ room.id }}/">{{ room.name }}</a></td>
+            <td>{{ room.capacity }}</td>
+            <td> {% if room.reserved %}Reserved {% else %}Free{% endif %} </td>
+            <td>{{ room.projector_available }}</td>
+            <td><a href="/room/modify/{{ room.id }}/">Edit</a></td>
+            <td><a href="/room/delete/{{ room.id }}/">Delete</a></td>
+            <td><a href="/room/reserve/{{ room.id }}/">Book</a></td>
+
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

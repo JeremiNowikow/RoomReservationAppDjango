@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Make reservation</title>
+</head>
+<body>
+    <h2>Choose the date for your reservation</h2>
+    <h3>Room name: {{ room.name }}</h3>
+    <form method="POST">
+        <label>
+            Date of reservation:
+            <input type="date" name="date">
+        </label>
+        <br>
+        <label>
+            Comment for the reservation:
+            <input type="text" name="comment">
+        </label>
+        <br>
+        <input type="submit" value="Submit">
+        {% if error %}
+            <br>
+            {{ error }}
+        {% endif %}
+        {% csrf_token %}
+    </form>
+    <h3>Existing reservations</h3>
+    {% for reservation in reservations %}
+        {{ reservation.date }}: {{ reservation.comment }} <br>
+    {% endfor %}
+</body>
+</html>

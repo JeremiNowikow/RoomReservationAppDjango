@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ room.name }}</title>
+</head>
+<body>
+    <h1>{{ room.name }}</h1>
+    <h3>Capacity: {{ room.capacity }}</h3>
+    <h4>Has projector: {{ room.projector_available }}</h4>
+
+    <a href="/room/modify/{{ room.id }}/">Edit room</a><br>
+    <a href="/room/delete/{{ room.id }}/">Delete room</a><br>
+    <a href="/room/reserve/{{ room.id }}/">Book room</a><br>
+
+    <h5>Reservations:</h5>
+
+    {% for reservation in reservations %}
+        {{ reservation.date }}: {{ reservation.comment }} <br>
+    {% endfor %}
+</body>
+</html>

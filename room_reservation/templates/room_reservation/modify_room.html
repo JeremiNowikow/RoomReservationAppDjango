@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modify room</title>
+</head>
+<body>
+<h2>Modify the info of the room</h2>
+    {% if error %}
+        {{ error }}
+    {% endif %}
+    <form method="POST">
+        <label>
+            Name of the room:
+            <input type="text" name="name" value="{{ room.name }}">
+        </label>
+        <br>
+        <label>
+            Room's max capacity:
+            <input type="number" name="capacity" value="{{ room.capacity }}">
+        </label>
+        <br>
+        <label>
+            Has projector?
+            <input type="checkbox" name="projector"  {% if room.projector_available %} checked {% endif %}>
+        </label>
+        <br>
+        <input type="submit" value="Submit changes">
+        {% csrf_token %}
+    </form>
+</body>
+</html>

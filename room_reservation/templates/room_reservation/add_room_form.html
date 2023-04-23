@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new room</title>
+</head>
+<body>
+    <h3>Fill in the information to add new room</h3>
+    <form method="POST">
+        <label>
+            Name of the room:
+            <input type="text" name="name">
+        </label>
+        <br>
+        <label>
+            Room's max capacity:
+            <input type="number" name="capacity">
+        </label>
+        <br>
+        <label>
+            Has projector?
+            <input type="checkbox" name="has_projector">
+        </label>
+        <br>
+        <input type="submit" value="Submit">
+        {% csrf_token %}
+    </form>
+    {% if error %}
+        <div>{{ error }}</div>
+    {% endif %}
+</body>
+</html>
